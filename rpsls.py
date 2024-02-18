@@ -3,7 +3,7 @@ import sys
 import random
 from enum import Enum
 
-def rpsls():
+def rpsls(name="PLAYER"):
     total_games = 0
     tied_games = 0
     PLAYER = 0
@@ -15,6 +15,7 @@ def rpsls():
         nonlocal SHELDON
         nonlocal total_games
         nonlocal tied_games
+        nonlocal name
 
         class GAME(Enum):
             ROCK = 1
@@ -36,7 +37,7 @@ def rpsls():
 
         total_games += 1
         
-        print("You chose: ".ljust(15) + f"{GAME(player_choice).name}")
+        print(f"{name.capitalize()} chose: ".ljust(15) + f"{GAME(player_choice).name}")
         print("Sheldon chose: ".ljust(15) + f"{GAME(computer_choice).name}")
 
         if player_choice == computer_choice:
@@ -47,42 +48,42 @@ def rpsls():
         match player_choice:
             case 1:
                 if computer_choice in (3,4):
-                    print("\n 🏆 You win! 🏆")
+                    print(f"\n 🏆 {name.capitalize()} wins! 🏆")
                     PLAYER += 1
                 else:
-                    print("\n😭 You lose! 😭")
+                    print("\n😭 Sheldon wins! 😭")
                     SHELDON += 1
             case 2:
                 if computer_choice in (1,5):
-                    print("\n 🏆 You win! 🏆")
+                    print(f"\n 🏆 {name.capitalize()} wins! 🏆")
                     PLAYER += 1
                 else:
-                    print("\n😭 You lose! 😭")
+                    print("\n😭 Sheldon wins! 😭")
                     SHELDON += 1
             case 3:
                 if computer_choice in (2,4):
-                    print("\n 🏆 You win! 🏆")
+                    print(f"\n 🏆 {name.capitalize()} wins! 🏆")
                     PLAYER += 1
                 else:
-                    print("\n😭 You lose! 😭")
+                    print("\n😭 Sheldon wins! 😭")
                     SHELDON += 1
             case 4:
                 if computer_choice in (2,5):
-                    print("\n 🏆 You win! 🏆")
+                    print(f"\n 🏆 {name.capitalize()} wins! 🏆")
                     PLAYER += 1
                 else:
-                    print("\n😭 You lose! 😭")
+                    print("\n😭 Sheldon wins! 😭")
                     SHELDON += 1
             case 5:
                 if computer_choice in (1,3):
-                    print("\n 🏆 You win! 🏆")
+                    print(f"\n 🏆 {name.capitalize()} wins! 🏆")
                     PLAYER += 1
                 else:
-                    print("\n😭 You lose! 😭")
+                    print("\n😭 Sheldon wins! 😭")
                     SHELDON += 1
         
         print("\nCurrent Score:")
-        print("YOU".ljust(10) + f"{PLAYER}")
+        print(f"{name.upper()}".ljust(10) + f"{PLAYER}")
         print("SHELDON".ljust(10) + f"{SHELDON}")
         
         print("\nPlay again? \n")
@@ -91,14 +92,14 @@ def rpsls():
         if replay.lower() == "y":
             return play()
         else:
-            print("\n❗️F I N A L  S C O R E S❗️".center(30, " "))
-            print("\nP L A Y E R".ljust(26) + f"{str(PLAYER).rjust(2)}")
-            print("\nS H E L D O N".ljust(26) + f"{str(SHELDON).rjust(2)}")
-            print("\nT I E D   G A M E S".ljust(26) + f"{str(tied_games).rjust(2)}")
-            print("\nT O T A L   G A M E S".ljust(26) + f"{str(total_games).rjust(2)}")
+            print("\n❗️FINAL SCORES❗️".center(10, " "))
+            print(f"\n{name.upper()}".ljust(12).center(15, " ") + f"{str(PLAYER).rjust(2)}")
+            print("\nSHELDON".ljust(12).center(15, " ") + f"{str(SHELDON).rjust(2)}")
+            print("\nTIED GAMES".ljust(12).center(15, " ") + f"{str(tied_games).rjust(2)}")
+            print("\nTOTAL GAMES".ljust(12).center(15, " ") + f"{str(total_games).rjust(2)}")
             sys.exit("\n🫶  Thank you for playing! 🫶\n")
     
     return play()
 
-game = rpsls()
-game()
+if __name__ == "__main__":
+    rpsls()
